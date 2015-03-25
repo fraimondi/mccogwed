@@ -1,0 +1,24 @@
+/* Another meaningless example, with just one agent (mainly for testing
+ * purposes
+*/
+
+// The number of agents
+N = 1;
+
+// The list of global states. 
+// Each global state is a tuple of N local states
+// (the application should check that the number of
+// elements is correct for each global state)
+S1 = (l_1_0);
+S2 = (l_1_1);
+S3 = (l_1_0);
+S4 = (l_1_1);
+S5 = (l_1_0);
+S6 = (l_1_2);
+ 
+// The temporal relation is just a list of pairs of global states
+RT = { (S1,S2), (S1,S3), (S2,S2), (S6,S1) };
+
+// This tells that atom1 is true in S1 and S3, etc.
+atom1 = { S1, S3 };
+atom2 = { S3, S4, S5};

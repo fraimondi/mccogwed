@@ -1,0 +1,17 @@
+Interesting properties with 3 cryptographers:
+
+1) (odd and (not crypt_1_paid)) implies B[=1](1,(crypt_2_paid or crypt_3_paid))
+
+2) (odd and (not crypt_1_paid)) implies (B[=1](1,(crypt_2_paid or crypt_3_paid)) and B[=.5](1,crypt_2_paid) and B[>.5](1,crypt_3_paid))
+
+
+Interesting properties with 5 cryptographers:
+
+3) "(odd and (not crypt_1_paid)) implies (B[=1](1,(crypt_2_paid or crypt_3_paid or crypt_4_paid or crypt_5_paid)) and B[=.25](1,crypt_2_paid) and B[=.25](1,crypt_3_paid))"
+
+
+And with 10 cryptographers:
+
+4) "(odd and (not crypt_1_paid)) implies (B[=1](1,(crypt_2_paid or crypt_3_paid or crypt_4_paid or crypt_5_paid or crypt_6_paid or crypt_7_paid or crypt_8_paid or crypt_9_paid or crypt_10_paid or crypt_11_paid)) and B[=.1](1,crypt_2_paid))"
+
+

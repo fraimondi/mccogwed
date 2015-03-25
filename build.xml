@@ -1,0 +1,57 @@
+<project name="cogwed" default="compile" basedir=".">
+
+  <path id="lib.path">
+    <pathelement location="build"/>
+    <fileset dir=".">
+          <include name="lib/*.jar"/>
+    </fileset>
+  </path>
+
+
+<macrodef name="antlr4">
+  <attribute name="grammar.name"/>
+  <attribute name="outputdirectory" default="."/>
+  <attribute name="package.name" />
+  <sequential>
+    <java jar="lib/antlr-4.1-complete.jar" fork="true">
+      <arg value="-package" />
+      <arg value="@{package.name}" />
+      <arg value="-o"/>
+      <arg path="@{outputdirectory}"/>
+      <arg path="@{grammar.name}"/>
+      <classpath>
+	<pathelement location="./lib/antlr-4.1-complete.jar"/>
+      </classpath>
+    </java>
+  </sequential>
+</macrodef>
+
+<target name="-init">
+  <tstamp/>
+  <mkdir dir="build"/> 
+</target>
+
+<target name="CogwedModelGrammar">
+  <antlr4 grammar.name="src/grammars/CogwedModelGrammar.g" package.name="cogwedmc.model.modelreader.antlr" outputdirectory="./src/cogwedmc/model/modelreader/antlr"/>
+</target>
+
+<target name="CogwedFormulaGrammar">
+  <antlr4 grammar.name="./src/grammars/CogwedFormulaGrammar.g" package.name="cogwedmc.formula.formulareader.antlr" outputdirectory="./src/cogwedmc/formula/formulareader/antlr" />
+</target>
+
+ <target name="compile" depends="-init,CogwedModelGrammar,CogwedFormulaGrammar">
+   <javac srcdir="src/" destdir="build/" includeantruntime="false"
+	  classpathref="lib.path" />
+ </target>
+
+  <target name="clean"
+          description="remove all build artifacts and temporary files">
+    <delete dir="build" failonerror="false"/>
+    <delete>
+      <fileset dir="." includes="**/*~" defaultexcludes="no" />
+      <fileset dir="." includes="**/*.bak" defaultexcludes="no" />
+      <fileset dir="." includes="**/error.xml" />
+    </delete>
+  </target>
+
+</project>
