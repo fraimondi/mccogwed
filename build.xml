@@ -13,14 +13,14 @@
   <attribute name="outputdirectory" default="."/>
   <attribute name="package.name" />
   <sequential>
-    <java jar="lib/antlr-4.1-complete.jar" fork="true">
+    <java jar="lib/antlr-4.5-complete.jar" fork="true">
       <arg value="-package" />
       <arg value="@{package.name}" />
       <arg value="-o"/>
       <arg path="@{outputdirectory}"/>
       <arg path="@{grammar.name}"/>
       <classpath>
-	<pathelement location="./lib/antlr-4.1-complete.jar"/>
+	<pathelement location="./lib/antlr-4.5-complete.jar"/>
       </classpath>
     </java>
   </sequential>
